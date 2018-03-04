@@ -17,10 +17,7 @@ import com.mygdx.game.utils.SpUtils;
 public class MainActivity extends Activity {
 
     private Button btn_start, btn_action;
-    private SMSBroadcastReceiver mSMSBroadcastReceiver;
-    private static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
 
-    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,22 +35,6 @@ public class MainActivity extends Activity {
 
         btn_action = (Button) findViewById(R.id.btn_login);
 
-
-
-
-
-        //授权
-        requestPermissions(new String[]{Manifest.permission.RECEIVE_SMS,
-                Manifest.permission.READ_SMS}, 521);
-
-        //生成广播处理
-        mSMSBroadcastReceiver = new SMSBroadcastReceiver();
-
-        //实例化过滤器并设置要过滤的广播
-        IntentFilter intentFilter = new IntentFilter(ACTION);
-        intentFilter.setPriority(1000);
-        //注册广播
-        this.registerReceiver(mSMSBroadcastReceiver, intentFilter);
     }
 
     @Override
